@@ -1,0 +1,66 @@
+<div>
+
+
+<div class="left" style="background:white;font-family:Arial">
+<h1>{{user.name}}</h1>
+<div style="padding:10px 20px;margin:10px 20px ;text-align: justify;
+    text-justify: inter-word;color:#007399" ng-bind-html="user.description"></div>
+
+
+<div height="100px">
+				<form name="addToCart" novalidate ng-submit="add()"
+					ng-controller="addToCartController" >
+					Qty:<input type="number" name="qty" min="1"
+						max="{{user.quantity}} "
+						style="width: 40px; padding: 2px; border: 1px solid black"
+						ng-model="qty" required /> 
+					<input type="hidden" name="itemCost" ng-model="itemCost" ng-init="itemCost =user.cost " value="{{user.cost}}">
+					<input type="hidden" name="itemAvailable" ng-model="itemAvailable" ng-init="itemAvailable =item.quantity " value="{{item.quantity}}">
+					
+					<input type="hidden" name="itemName" ng-model="itemName" ng-init="itemName =user.name " value="{{user.name}}">
+						<input type="submit"
+						class="blueButton" value="Add to cart" /> <br /> <br />
+				
+					<div class="error"
+						ng-show="!addToCart.$pristine&&addToCart.qty.$error.max">
+						You cannnot buy more than available quantity</div>
+					<div class="error"
+						ng-show="!addToCart.$pristine&&addToCart.qty.$error.min">
+						You need to add atleast one item to cart</div>
+					<div class="error"
+						ng-show="!addToCart.$pristine&&addToCart.qty.$error.number">
+						It is not a valid Number</div>
+				</form>
+
+				<div class="clear"></div>
+			</div>
+
+
+
+</div>
+<div class="right">
+		<input type="search" ng-model="search" placeholder="Search...">
+		</br> 
+		Sort By:
+		<select ng-model="sortorder">
+			<option value="+name">Name (A-Z)</option>
+			<option value="+cost">Cost (Low - High)</option>
+			<option value="-cost">Cost (High - Low)</option>
+		</select>
+<div data-ng-controller="addToCartController" data-ng-init="init()" >
+<table>
+<tr>
+<td class="first"> Name</td>
+<td class="second">Quantity</td>
+<td class="third">Cost</td>
+</tr>
+	<tr ng-repeat="item in cartItems">
+	<td class="first">{{item.item}}</td>
+	<td class="second">{{item.quantity}}</td>
+	<td class="third">{{item.cost}}</td>
+	</tr>
+	</table>
+	</div>
+	</div>
+
+</div>

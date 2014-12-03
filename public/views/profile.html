@@ -1,0 +1,41 @@
+<div style="height:100%;">
+<div style="float:left;width:30%;background:white;height:70%;">
+<ul>
+<p ng-click="view=0">Add Item</p>
+
+<p ng-click="view=1">Add Catalog</p>
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+</ul>
+
+</div>
+<div style="float:right;width:70%;" >
+<div ng-show="view===0">
+<h2 style="text-align:center">Add Item</h2>
+<form class="addForms" name="addItem" ng-Controller="CatalogController" ng-submit="add()">
+<input  ng-model="name" name="name" type="text"  ng-minlength=3 placeholder="Name" required></input><br/><br/>
+<div ng-show="addItem.name.$dirty&&addItem.name.$invalid">Name is a required field with minimum length of 3 characters</br></br></div>
+<textarea  ng-model="Description" placeholder="description"></textarea><br/><br/>
+<input  name="quantity" type="number" ng-model="quantity" placeholder="Quantity" required min=1></input><br/><br/>
+<div ng-show="addItem.quantity.$dirty&&addItem.quantity.$invalid">Quantity is a required field with minimum quantity of 1 unit and should be a valid number</br></br></div>
+<input name="cost" placeholder="Cost" type="text" ng-model="cost" required ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" /> <br/><br/>
+<div ng-show="addItem.cost.$dirty&&addItem.cost.$invalid">Please enter a valid cost</br></br></div>
+
+<span>Catalog</span><select ng-init="catalog = $scope.menuItems.Items[0].name" name="catalog" ng-model="catalog" required ng-options="name.name for name in menuItems.Items"></select>
+<div ng-show="addItem.cost.$valid&&addItem.catalog.$invalid">Please select atleast one catalog</div>
+</br></br>
+<input type="submit" ng-disabled="addItem.$invalid"></input>
+</form>
+</div>
+
+
+
+<div ng-show="view===1"><h2 style="text-align:center">Add Catalog</h2>
+<form class="addForms" name="addItem" ng-Controller="CatalogController" ng-submit="addCatalog()">
+<input  ng-model="name" name="name" type="text"  ng-minlength=3 placeholder="Name" required></input><br/><br/>
+<div ng-show="addItem.name.$dirty&&addItem.name.$invalid">Name is a required field with minimum length of 3 characters</br></br></div>
+<textarea  ng-model="Description" placeholder="description"></textarea><br/><br/>
+
+<input type="submit" ng-disabled="addItem.$invalid"></input>
+</form></div>
+</div>
+</div>

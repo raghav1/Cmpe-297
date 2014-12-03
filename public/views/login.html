@@ -1,0 +1,19 @@
+<div ng-controller="UserController">
+  <span></span>
+  <div class="myinput">
+  
+  <form ng-submit="submit()">
+  <h1>Login</h1>
+   </br>
+    <input ng-model="user.username" type="text" name="user" placeholder="Username" />
+    </br></br>
+    <input ng-model="user.password" type="password" name="pass" placeholder="Password" />
+    </br></br>
+    <input type="submit" value="Login" class="blueButton" />
+    <p>{{message}}</p>
+     <h4 ng-click="signup()">Signup</h4>
+  </form>
+  </div>
+  
+ 
+</div>

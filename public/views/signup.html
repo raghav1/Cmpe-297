@@ -1,0 +1,121 @@
+
+<!--/* This button was generated using CSSButtonGenerator.com */-->
+
+<link rel="stylesheet" type="text/css" href="stylesheets/style.css">  
+
+
+
+    <div class="row">
+    <div class="myinput">
+    <form name="signup_form" novalidate ng-submit="signupForm()" ng-controller="SignupController">
+  </br>
+    <h1>Signup</h1>
+      
+      	<input type="text" name="fname" placeholder="First Name"
+          ng-model="signup.fname"
+          ng-minlength=3 ng-maxlength=100 required/>
+          <div class="error"
+             ng-show="signup_form.fname.$dirty && signup_form.fname.$invalid && signup_form.submitted">
+          <p class="error"
+                 ng-show="signup_form.fname.$error.required">
+                 Your email is required.
+          </p>
+          <p class="error"
+                 ng-show="signup_form.fname.$error.minlength">
+                 Your email is required to be at least 3 characters
+          </p>
+          <p class="error"
+                 ng-show="signup_form.fname.$error.email">
+                 That is not a valid email. Please input a valid email.
+          </p>
+          <p class="error"
+                 ng-show="signup_form.fname.$error.maxlength">
+                 Your email cannot be longer than 100 characters
+          </p>
+        </div>  </br></br>
+        <input type="text" name="lname" placeholder="Last Name"
+          ng-model="signup.fname"
+          ng-minlength=3 ng-maxlength=100 required/>
+          <div class="error"
+             ng-show="signup_form.lname.$dirty && signup_form.lname.$invalid && signup_form.submitted">
+          <p class="error"
+                 ng-show="signup_form.lname.$error.required">
+                 Your email is required.
+          </p>
+          <p class="error"
+                 ng-show="signup_form.lname.$error.minlength">
+                 Your email is required to be at least 3 characters
+          </p>
+          <p class="error"
+                 ng-show="signup_form.lname.$error.email">
+                 That is not a valid email. Please input a valid email.
+          </p>
+          <p class="error"
+                 ng-show="signup_form.lname.$error.maxlength">
+                 Your email cannot be longer than 100 characters
+          </p>
+        </div> </br></br>
+        <input type="email"
+          placeholder="Email"
+          name="email"
+          ng-model="signup.email"
+          ng-minlength=3 ng-maxlength=100
+          
+          required />
+        <div class="error"
+             ng-show="signup_form.email.$dirty && signup_form.email.$invalid && signup_form.submitted">
+          <p class="error"
+                 ng-show="signup_form.email.$error.required">
+                 Your email is required.
+          </p>
+          <p class="error"
+                 ng-show="signup_form.email.$error.minlength">
+                 Your email is required to be at least 3 characters
+          </p>
+          <p class="error"
+                 ng-show="signup_form.email.$error.email">
+                 That is not a valid email. Please input a valid email.
+          </p>
+          <p class="error"
+                 ng-show="signup_form.email.$error.maxlength">
+                 Your email cannot be longer than 100 characters
+          </p>
+        </div>
+      
+   </br></br>
+
+
+        <input  type="password"
+                placeholder="Desired password"
+                name="password"
+                ng-model="signup.password"
+                ng-minlength=3
+                ng-maxlength=20
+                ng-class="{error: signup_form.name.$dirty && signup_form.name.$invalid}"
+                ensure-unique="password" required />
+      <div class="error"
+           ng-show="signup_form.email.$dirty && signup_form.email.$invalid && signup_form.submitted">
+        <p class="error"
+               ng-show="signup_form.password.$error.required">
+               Please input a password
+        </p>
+        <p class="error"
+               ng-show="signup_form.password.$error.minlength">
+               Your password is required to be at least 3 characters
+        </p>
+        <p class="error"
+               ng-show="signup_form.password.$error.maxlength">
+               Your password cannot be longer than 20 characters
+        </p>
+       
+      </div>
+      </br></br>
+    <button type="submit" class="blueButton">Submit</button>
+     </br></br>
+    </form>
+</br>
+    </div>
+
+</br>
+</br>
+</form>

@@ -1,0 +1,78 @@
+<body>
+
+	<div class="right">
+		<input type="search" ng-model="search" placeholder="Search...">
+		</br> 
+		Sort By:
+		<select ng-model="sortorder">
+			<option value="+name">Name (A-Z)</option>
+			<option value="+cost">Cost (Low - High)</option>
+			<option value="-cost">Cost (High - Low)</option>
+		</select>
+<div data-ng-controller="addToCartController" data-ng-init="init()" >
+<table>
+<tr>
+<td class="first"> Name</td>
+<td class="second">Quantity</td>
+<td class="third">Cost</td>
+</tr>
+	<tr ng-repeat="item in cartItems">
+	<td class="first">{{item.item}}</td>
+	<td class="second">{{item.quantity}}</td>
+	<td class="third">{{item.cost}}</td>
+	</tr>
+	</table>
+	</div>
+	</div>
+
+	<div class="left">
+
+<div class="items"
+			ng-repeat="item in allItems| filter:search|orderBy:sortorder"
+			ng-class-odd="'itemcenter'" ng-class-even="'itemcenter'">
+			<div style="float: left; width: 50%">
+
+				<p>
+					{{item.name}} : <small style="color: red">{{item.catalog}}</small>
+
+				</p>
+
+
+				<p>Price : ${{item.cost}}</p>
+				<p>Available quantity: {{item.quantity}}</p>
+				 <div ng-controller="ViewItemController">
+				<p ng-click="toggle(item)">View Details</p>
+				</div>
+			</div>
+			<div style="float: right; width: 50%; padding: 0; margin: 0">
+				<form name="addToCart" novalidate ng-submit="add()"
+					ng-controller="addToCartController" >
+					Qty:<input type="number" name="qty" min="1"
+						max="{{item.quantity}} "
+						style="width: 40px; padding: 2px; border: 1px solid black"
+						ng-model="qty" required /> 
+					<input type="hidden" name="itemCost" ng-model="itemCost" ng-init="itemCost =item.cost " value="{{item.cost}}">
+					<input type="hidden" name="itemAvailable" ng-model="itemAvailable" ng-init="itemAvailable =item.quantity " value="{{item.quantity}}">
+					
+					<input type="hidden" name="itemName" ng-model="itemName" ng-init="itemName =item.name " value="{{item.name}}">
+						<input type="submit"
+						class="blueButton" value="Add to cart" /> <br /> <br />
+				
+					<div class="error"
+						ng-show="!addToCart.$pristine&&addToCart.qty.$error.max">
+						You cannnot buy more than available quantity</div>
+					<div class="error"
+						ng-show="!addToCart.$pristine&&addToCart.qty.$error.min">
+						You need to add atleast one item to cart</div>
+					<div class="error"
+						ng-show="!addToCart.$pristine&&addToCart.qty.$error.number">
+						It is not a valid Number</div>
+				</form>
+
+				<div class="clear"></div>
+			</div>
+
+		</div>
+		</div>
+</body>
+</html>
